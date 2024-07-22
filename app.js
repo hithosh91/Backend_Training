@@ -1,182 +1,264 @@
-/*const http = require("http");
+const express = require("express");
 const fs = require("fs");
 const hostname = "127.0.0.1";
 const port = 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/plain");
-  res.end("Hello, world!\n");
-});
+// const server = http.createServer((req, res) => {
+//   res.statusCode = 200;
+//   res.setHeader("Content-Type", "text/plain");
+//   res.end("Hello, world!\n");
+// });
+const app = express();
 
-server.listen(port, hostname, () => {
+app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}`);
 });
 
+// fs.readFile("Hello.txt", (err, data) => {
+//   if (err) {
+//     console.error(err);
+//     return;
+//   }
+//   console.log(data, "dataa");
+// });
 
+// // Creating a new directory
+// fs.mkdir("Hithosh.txt", { recursive: true }, (err) => {
+//   if (err) {
+//     console.error(err);
+//     return;
+//   }
+//   console.log("Directory has been created!");
+// });
 
-fs.readFile("Hello.txt", (err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  console.log(data, "dataa");
-});
+// const content = "Some content!";
 
-// Creating a new directory
-fs.mkdir("Hithosh.txt", { recursive: true }, (err) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  console.log("Directory has been created!");
-});
+// fs.writeFile("Hithosh.txt", content, (err) => {
+//   if (err) {
+//     console.error(err);
+//   } else {
+//     console.log("File written successfully!");
+//   }
+// });
 
-const content = "Some content!";
+// fs.writeFile("HIthosh/Hithosh.txt", content, (err) => {
+//   if (err) {
+//     console.error(err);
+//   } else {
+//     console.log("File written successfully!");
+//   }
+// });
 
-fs.writeFile("Hithosh.txt", content, (err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log("File written successfully!");
-  }
-});
+// const data = "This is a streamed response.";
+// res.writeHead(200, { "Content-Type": "text/plain" });
 
-fs.writeFile("HIthosh/Hithosh.txt", content, (err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log("File written successfully!");
-  }
-});
+// // Send data in chunks
+// for (let i = 0; i < data.length; i += 10) {
+//   const chunk = data.slice(i, i + 10);
+//   res.write(chunk);
+// }
 
-const data = "This is a streamed response.";
-res.writeHead(200, { "Content-Type": "text/plain" });
+// res.end();
 
-// Send data in chunks
-for (let i = 0; i < data.length; i += 10) {
-  const chunk = data.slice(i, i + 10);
-  res.write(chunk);
-}
+// server.listen(3000, () => {
+//   console.log("Server listening on port 3000");
+// });*/
+// /*
+// const fs = require("fs");
 
-res.end();
+// // Create a readable stream
+// const readableStream = fs.createReadStream("Hello.txt", {
+//   encoding: "utf8",
+//   highWaterMark: 2024, // 16KB chunk size
+// });
 
-server.listen(3000, () => {
-  console.log("Server listening on port 3000");
-});*/
-/*
-const fs = require("fs");
+// // Handle the 'data' event
+// readableStream.on("data", (chunk) => {
+//   console.log("Received chunk:", chunk);
+// });
 
-// Create a readable stream
-const readableStream = fs.createReadStream("Hello.txt", {
-  encoding: "utf8",
-  highWaterMark: 2024, // 16KB chunk size
-});
+// // Handle the 'end' event
+// readableStream.on("end", () => {
+//   console.log("Finished reading file.");
+// });
 
-// Handle the 'data' event
-readableStream.on("data", (chunk) => {
-  console.log("Received chunk:", chunk);
-});
+// // Handle the 'error' event
+// readableStream.on("error", (err) => {
+//   console.error("Error reading file:", err);
+// });
 
-// Handle the 'end' event
-readableStream.on("end", () => {
-  console.log("Finished reading file.");
-});
+// const fs = require('fs');
 
-// Handle the 'error' event
-readableStream.on("error", (err) => {
-  console.error("Error reading file:", err);
-});
+// // Define the path to your file
+// const filePath = 'example.txt';
 
+// // Read the file asynchronously
+// fs.readFile(filePath, 'utf8', (err, data) => {
+//     if (err) {
+//         console.error('Error reading the file:', err);
+//         return;
+//     }
+//     console.log('File content:', data);
+// });
 
-const fs = require('fs');
+// const express = require("express");
+// const fs = require("fs");
+// let newData;
+// let data = fs.readFile("Hello.txt", "utf8", (err, data) => {
+//   if (err) {
+//     console.error(err);
+//     return;
+//   }
+//   newData = data;
+//   console.log(newData);
+// });
 
-// Define the path to your file
-const filePath = 'example.txt';
+// const app = express();
+// app.get("/home", (req, res) => {
+//   res.send(newData);
+// });
+// app.listen(3000, () => {
+//   console.log("server is running");
+// });
+// */
+// // path module
 
-// Read the file asynchronously
-fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-        console.error('Error reading the file:', err);
-        return;
-    }
-    console.log('File content:', data);
-});
+// const express = require("express");
+// const path = require("path");
+// const fs = require("fs");
 
+// const app = express();
+// /*const directoryPath = path.join(__dirname, "Notes");
+// console.log(directoryPath);
+// app.get("/files", (req, res) => {
+//   // Replace 'your-directory' with the actual directory name
 
+//   fs.readdir(directoryPath, (err, files) => {
+//     /*  if (err) {
+//       return res.status(500).send("Unable to scan directory: " + err);
+//     }
+//     res.send(files);
+//   });
+// */
 
-const express = require("express");
-const fs = require("fs");
-let newData;
-let data = fs.readFile("Hello.txt", "utf8", (err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  newData = data;
-  console.log(newData);
-});
+// app.get("/files", (req, res) => {
+//   const filename = req.params.filename;
+//   console.log(filename, "filename");
+//   const filePath = path.join(directoryPath, filename);
+//   console.log(filePath, "filepath");
 
-const app = express();
-app.get("/home", (req, res) => {
-  res.send(newData);
-});
-app.listen(3000, () => {
-  console.log("server is running");
-});
-*/
-// path module
+//   fs.readdir(directoryPath, "utf8", (err, data) => {
+//     if (err) {
+//       return res.status(500).send("Unable to read file: " + err);
+//     }
+//     res.send(data);
+//     console.log(data, "First");
+//   });
+// });
+// app.listen(5000, () => {
+//   console.log("server is runing");
+// });
 
-const express = require("express");
-const path = require("path");
-const fs = require("fs");
+// //how to pass data from one file to and write anoter
+// let newdata;
+// let data = fs.readFile("Hello.txt", "utf8", (erro, data) => {
+//   if (erro) {
+//     console.log("error");
+//   } else {
+//     console.log("data succesfully add");
+//     newdata = data;
+//     console.log(newdata);
+//   }
+// });
 
-const app = express();
-const directoryPath = path.join(__dirname, "Notes");
-app.get("/files", (req, res) => {
-  // Replace 'your-directory' with the actual directory name
+// console.log(newdata);
 
-  fs.readdir(directoryPath, (err, files) => {
-    if (err) {
-      return res.status(500).send("Unable to scan directory: " + err);
-    }
-    res.send(files);
-  });
-});
+// fs.writeFile("example.txt", "newdata", (err) => {
+//   if (err) {
+//     console.error("Error writing file:", err);
+//     return;
+//   }
+//   console.log("File written successfully!");
+// });
 
-app.get("/files/:filename", (req, res) => {
-  const filename = req.params.filename;
-  const filePath = path.join(directoryPath, filename);
+// //get method send data in chunks:
 
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) {
-      return res.status(500).send("Unable to read file: " + err);
-    }
-    res.send(data);
-  });
-});
-app.listen(3000, () => {
-  console.log("server is runing");
-});
+// //how to pass data send
+// app.get("/stream", (req, res) => {
+//   fs.readFile("Hello.txt", (err, data) => {
+//     res.send(data);
+//   });
+// });
 
-//how to pass data from one file to and write anoter
-let newdata;
-let data = fs.readFile("Hello.txt", "utf8", (erro, data) => {
-  if (erro) {
-    console.log("error");
-  } else {
-    console.log("data succesfully add");
-    newdata = data;
-    console.log(newdata);
-  }
-});
+// app.get("/streams", (req, res) => {
+//   const directoryPath = path.join(__dirname, "Notes");
+//   const filePath = path.join(directoryPath, "Data.txt");
+//   console.log(filePath, "filePath");
+//   const stream = fs.createReadStream(`${filePath}`, "utf8");
+//   stream.on("data", (chunk) => {
+//     res.write(chunk);
+//   });
+//   stream.on("end", () => res.end());
+// });
 
-console.log(newdata);
+// //streams
 
-fs.writeFile("example.txt", "newdata", "utf8", (err) => {
-  if (err) {
-    console.error("Error writing file:", err);
-    return;
-  }
-  console.log("File written successfully!");
-});
+// const readstream = fs.createReadStream("example.txt");
+
+// readstream.on("data", (chunk) => {
+//   console.log(".....................");
+//   console.log(chunk);
+// });
+// readstream.on("open", () => {
+//   console.log("Stream opened...");
+// });
+
+// readstream.on("end", () => {
+//   console.log("Stream Closed...");
+// });
+
+// //get method send data in chunks:
+
+// // Function to demonstrate reading from a file and writing to another file using streams
+// function readFileAndWriteToFile() {
+//   try {
+//     // Create a readable stream from the source file
+//     const readableStream = fs.createReadStream("Notes/Data..txt");
+
+//     // Create a writable stream to the destination file
+//     const writableStream = fs.createWriteStream("Notes/First.txt");
+
+//     // Pipe the readable stream to the writable stream
+//     // This automatically handles the data in chunks
+//     readableStream.pipe(writableStream);
+
+//     // Listen for the 'finish' event to know when the data transfer is complete
+//     writableStream.on("end", () => {
+//       console.log("Data has been  sent");
+//     });
+//   } catch (error) {
+//     console.error("An error occurred:", error);
+//   }
+// }
+
+// // Call the function to start the operation
+// readFileAndWriteToFile();
+
+///buffer
+// Creating a buffer
+const buffer = Buffer.alloc(10); // Creates a buffer of 10 bytes, filled with zeros
+const bufferFromData = Buffer.from("Hitsoh Kota"); // Creates a buffer from a string
+
+// Writing to a buffer
+buffer.write("Hello");
+
+// Reading from a buffer
+const str = buffer.toString("utf8", 0, 10); // 'Hello'
+const strs = bufferFromData.toString("utf8", 0, 5);
+console.log(strs, "bufferFromData");
+console.log(str, "str");
+// Buffer concatenation
+const buffer1 = Buffer.from("Hello");
+const buffer2 = Buffer.from("World");
+const combinedBuffer = Buffer.concat([buffer1, buffer2]);
+console.log(combinedBuffer.toString()); // 'HelloWorld
